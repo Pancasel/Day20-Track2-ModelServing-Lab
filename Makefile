@@ -44,20 +44,20 @@ bench: ## Track 01 — TTFT/TPOT/P95 baseline + Q4_K_M vs Q2_K
 # Track 02 — llama-server
 # ─────────────────────────────────────────────────────────────
 
-serve: ## Track 02 — start llama-server on :8080 (foreground)
+serve: ## Track 02 — start llama-server on :8089 (foreground)
 	@bash 02-llama-cpp-server/start-server.sh
 
-serve-native: ## Track 02 (observability) — native llama-server WITH /metrics on :8080 (needs `make build-llama`)
+serve-native: ## Track 02 (observability) — native llama-server WITH /metrics on :8089 (needs `make build-llama`)
 	@bash 02-llama-cpp-server/start-server-native.sh
 
 smoke: ## Track 02 — smoke-test the running server
 	@$(PY) 02-llama-cpp-server/smoke-test.py
 
 load-10: ## Track 02 — locust 10 users, 1 min
-	@$(LOCUST) -f 02-llama-cpp-server/load-test.py --headless -u 10 -r 1 -t 1m --host http://localhost:8080
+	@$(LOCUST) -f 02-llama-cpp-server/load-test.py --headless -u 10 -r 1 -t 1m --host http://localhost:8089
 
 load-50: ## Track 02 — locust 50 users, 1 min
-	@$(LOCUST) -f 02-llama-cpp-server/load-test.py --headless -u 50 -r 1 -t 1m --host http://localhost:8080
+	@$(LOCUST) -f 02-llama-cpp-server/load-test.py --headless -u 50 -r 1 -t 1m --host http://localhost:8089
 
 metrics: ## Track 02 (observability) — record /metrics 60s (needs the native server: make serve-native)
 	@$(PY) 02-llama-cpp-server/record-metrics.py --duration 60
@@ -66,7 +66,7 @@ metrics: ## Track 02 (observability) — record /metrics 60s (needs the native s
 # Track 03 — Integration
 # ─────────────────────────────────────────────────────────────
 
-pipeline: ## Track 03 — run RAG → llama-server pipeline (server must be on :8080)
+pipeline: ## Track 03 — run RAG → llama-server pipeline (server must be on :8089)
 	@$(PY) 03-milestone-integration/pipeline.py
 
 # ─────────────────────────────────────────────────────────────

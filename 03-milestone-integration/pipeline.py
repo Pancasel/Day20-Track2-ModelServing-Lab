@@ -13,7 +13,7 @@ from typing import Iterable
 
 import httpx
 
-LLAMA_SERVER_BASE = "http://localhost:8080/v1"
+LLAMA_SERVER_BASE = "http://localhost:8089/v1"
 SYSTEM_PROMPT = (
     "You are a serving-engineering tutor. Answer using only the documents provided. "
     "If the documents don't contain the answer, say so."

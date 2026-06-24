@@ -56,7 +56,7 @@ def scrape(url: str) -> dict[str, float]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--url", default="http://localhost:8080/metrics")
+    parser.add_argument("--url", default="http://localhost:8089/metrics")
     parser.add_argument("--duration", type=int, default=60, help="seconds to record")
     parser.add_argument("--interval", type=float, default=2.0, help="seconds between scrapes")
     parser.add_argument("--out", default="benchmarks/02-server-metrics.csv")
@@ -94,7 +94,7 @@ def main() -> int:
         print("  The Python server (`make serve`) has NO /metrics endpoint.", file=sys.stderr)
         print("  Use the NATIVE llama.cpp server instead:", file=sys.stderr)
         print("    make build-llama      # one-time: build llama-server from source", file=sys.stderr)
-        print("    make serve-native     # starts it WITH --metrics on :8080", file=sys.stderr)
+        print("    make serve-native     # starts it WITH --metrics on :8089", file=sys.stderr)
         print("  then drive load (make load-10) and re-run `make metrics`.", file=sys.stderr)
         return 1
 

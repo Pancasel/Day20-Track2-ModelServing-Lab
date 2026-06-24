@@ -22,11 +22,16 @@ LLAMA_BENCH = Path("BONUS-llama-cpp-optimization/llama.cpp/build/bin/llama-bench
 LLAMA_BENCH_EXE = LLAMA_BENCH.with_suffix(".exe")
 
 # llama-bench prints a markdown-ish table; this regex grabs the tg128 (decode) row.
-TG_RE = re.compile(r"\|\s*tg128\s*\|\s*([0-9.]+)\s*±")
+TG_RE = re.compile(r"\|\s*tg\d+\s*\|\s*([0-9.]+)")
 
 
 def find_bench() -> Path:
-    for p in (LLAMA_BENCH, LLAMA_BENCH_EXE):
+    for p in (
+        LLAMA_BENCH,
+        LLAMA_BENCH_EXE,
+        Path("BONUS-llama-cpp-optimization/llama.cpp/build/bin/Release/llama-bench.exe"),
+        Path("BONUS-llama-cpp-optimization/llama.cpp/build/bin/Release/llama-bench"),
+    ):
         if p.exists():
             return p
     print(f"ERROR: llama-bench not found at {LLAMA_BENCH}", file=sys.stderr)

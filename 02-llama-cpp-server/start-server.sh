@@ -17,12 +17,12 @@ echo "    threads   : $THREADS"
 echo "    gpu_layers: $GPU_LAYERS"
 echo "    parallel  : $PARALLEL"
 echo "    ctx       : $CTX"
-echo "    listening : http://0.0.0.0:8080"
+echo "    listening : http://0.0.0.0:8089"
 echo
 
 exec python -m llama_cpp.server \
     --model "$MODEL" \
-    --host 0.0.0.0 --port 8080 \
+    --host 0.0.0.0 --port 8089 \
     --n_threads "$THREADS" \
     --n_gpu_layers "$GPU_LAYERS" \
     --n_ctx "$CTX"

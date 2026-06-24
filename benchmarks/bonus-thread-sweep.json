@@ -1,0 +1,26 @@
+[
+  {
+    "threads": 1,
+    "tok_s": 5.54
+  },
+  {
+    "threads": 2,
+    "tok_s": 20.17
+  },
+  {
+    "threads": 4,
+    "tok_s": 31.84
+  },
+  {
+    "threads": 8,
+    "tok_s": 37.57
+  },
+  {
+    "threads": 12,
+    "tok_s": 32.38
+  },
+  {
+    "threads": 24,
+    "tok_s": 28.02
+  }
+]

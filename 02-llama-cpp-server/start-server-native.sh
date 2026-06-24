@@ -24,16 +24,16 @@ NGL="${LAB_N_GPU_LAYERS:-99}"
 PARALLEL="${LAB_PARALLEL:-4}"
 CTX="${LAB_N_CTX:-2048}"
 
-echo "==> Starting NATIVE llama-server (with --metrics) on http://0.0.0.0:8080"
+echo "==> Starting NATIVE llama-server (with --metrics) on http://0.0.0.0:8089"
 echo "    binary  : $BIN"
 echo "    model   : $MODEL"
 echo "    parallel: $PARALLEL   ctx: $CTX   ngl: $NGL"
-echo "    metrics : http://localhost:8080/metrics  (n_busy_slots_per_decode, requests_processing, tokens_predicted_total)"
+echo "    metrics : http://localhost:8089/metrics  (n_busy_slots_per_decode, requests_processing, tokens_predicted_total)"
 echo
 
 exec "$BIN" \
     -m "$MODEL" \
-    --host 0.0.0.0 --port 8080 \
+    --host 0.0.0.0 --port 8089 \
     -t "$THREADS" \
     -ngl "$NGL" \
     --parallel "$PARALLEL" --cont-batching \

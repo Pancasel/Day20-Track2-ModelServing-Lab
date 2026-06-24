@@ -8,7 +8,7 @@ import time
 
 import httpx
 
-BASE_URL = "http://localhost:8080/v1"
+BASE_URL = "http://localhost:8089/v1"
 
 
 def main() -> int:
@@ -29,7 +29,7 @@ def main() -> int:
         r.raise_for_status()
     except httpx.HTTPError as e:
         print(f"ERROR: {e}", file=sys.stderr)
-        print("Is llama-server running on :8080? Start it first (see this directory's README).", file=sys.stderr)
+        print("Is llama-server running on :8089? Start it first (see this directory's README).", file=sys.stderr)
         return 1
     elapsed = (time.perf_counter() - t0) * 1000.0
     body = r.json()
@@ -38,7 +38,7 @@ def main() -> int:
 
     print("==> GET /metrics (head)")
     try:
-        m = httpx.get("http://localhost:8080/metrics", timeout=5.0)
+        m = httpx.get("http://localhost:8089/metrics", timeout=5.0)
         for line in m.text.splitlines()[:25]:
             print(f"   {line}")
     except httpx.HTTPError:
